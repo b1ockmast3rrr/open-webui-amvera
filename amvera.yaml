@@ -2,4 +2,4 @@ meta: environment: docker toolchain: name: docker
 
 build: dockerfile: Dockerfile
 
-run: image: ghcr.io/open-webui/open-webui:main containerPort: 8080 persistenceMount: /app/backend/data env: - WEBUI_AUTH=true - WEBUI_SECRET_KEY=your-secret-key-change-this
+run: image: ghcr.io/open-webui/open-webui:main containerPort: 8080 persistenceMount: /data env: - WEBUI_AUTH=true - WEBUI_SECRET_KEY=your-secret-key-change-this

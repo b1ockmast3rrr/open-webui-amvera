@@ -4,7 +4,7 @@ WORKDIR /app
 
 EXPOSE 8080
 
-ENV WEBUI_AUTH=true ENV WEBUI_SECRET_KEY=your-secret-key-here
+ENV WEBUI_AUTH true ENV WEBUI_SECRET_KEY your-secret-key-here
 
 VOLUME ["/app/backend/data"]
 

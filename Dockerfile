@@ -1,6 +1,6 @@
 FROM ollama/ollama:latest 
 ARG HF_TOKEN 
 ENV HF_TOKEN=${HF_TOKEN} 
-RUN ollama pull llama3.3 
 EXPOSE 11434 
-CMD ["ollama", "serve"]
+RUN mkdir -p /entrypoint && echo '#!/bin/sh\nollama serve &\nsleep 10\nollama pull llama3.3\nwait' > /entrypoint/start.sh && chmod +x /entrypoint/start.sh 
+CMD ["/bin/sh", "/entrypoint/start.sh"]

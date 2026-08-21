@@ -8,4 +8,6 @@ RUN curl -fsSL https://ollama.ai/install.sh | sh
 
 EXPOSE 11434 
 
-CMD ["/bin/bash", "-c", "ollama serve & sleep 15 && ollama pull llama3.3 && wait"]
+RUN echo '#!/bin/bash\nollama serve &\nsleep 15\nollama pull llama3.3\nwait' > /start.sh && chmod +x /start.sh 
+
+CMD ["/start.sh"]

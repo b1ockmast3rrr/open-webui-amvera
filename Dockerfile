@@ -1,6 +1,1 @@
-FROM ollama/ollama:latest 
-ARG HF_TOKEN 
-ENV HF_TOKEN=${HF_TOKEN} 
-EXPOSE 11434 
-RUN mkdir -p /entrypoint && echo '#!/bin/sh\nollama serve &\nsleep 10\nollama pull llama3.3\nwait' > /entrypoint/start.sh && chmod +x /entrypoint/start.sh 
-CMD ["/bin/sh", "/entrypoint/start.sh"]
+FROM ollama/ollama:latest RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/* ENV HF_TOKEN=${HF_TOKEN} EXPOSE 11434 ENTRYPOINT ["/bin/sh", "-c", "ollama serve & sleep 15 && ollama pull llama3.3 && wait"]
